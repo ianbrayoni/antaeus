@@ -4,6 +4,8 @@ import io.mockk.every
 import io.mockk.mockk
 import io.pleo.antaeus.core.exceptions.InvoiceNotFoundException
 import io.pleo.antaeus.data.AntaeusDal
+import io.pleo.antaeus.models.Invoice
+import io.pleo.antaeus.models.InvoiceStatus
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
