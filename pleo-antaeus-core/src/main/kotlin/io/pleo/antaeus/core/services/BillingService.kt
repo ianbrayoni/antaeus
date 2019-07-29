@@ -24,6 +24,7 @@ class BillingService(
 
     fun pay(): Boolean {
         var isCharged = false
+
         val pendingInvoices = invoiceService.fetchInvoicesByStatus(InvoiceStatus.PENDING)
 
         pendingInvoices.forEach {
@@ -38,7 +39,7 @@ class BillingService(
             } catch (e: InvoiceNotFoundException) {
                 invoiceNotFoundExceptionHandler(it)
             } catch (e: Exception) {
-                throw Exception(e)
+                generalExceptionHandler(e, it)
             }
 
 
@@ -75,5 +76,9 @@ class BillingService(
 
     private fun networkExceptionHandler(invoice: Invoice) {
         logger.error("Processing Error - Network Exception occurred: invoiceId ${invoice.id}")
+    }
+
+    private fun generalExceptionHandler(e: Exception, invoice: Invoice) {
+        logger.error(e) { "Processing Error - Exception occurred: invoiceId ${invoice.id}" }
     }
 }
