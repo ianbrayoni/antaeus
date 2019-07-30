@@ -23,15 +23,15 @@ _Quartz_ did fit this criteria hence its usage herein. It is also open-source an
 
 The solution has three components: _scheduler_, _job_ and a _trigger_:
 
-i) *Job*
+- *Job*
 
    Task to be executed, i.e, billing of invoices.
 
-ii) *Scheduler*
+- *Scheduler*
 
    Coordinates the execution of the job.
 
-iii) *Trigger*
+- *Trigger*
 
    Sets up the interval and frequency with which the job will run. I chose a [CronTrigger](https://www.quartz-scheduler.net/documentation/quartz-2.x/tutorial/crontriggers.html) which is used to execute a job using a cron expression. The job in our case will run on 1st of every month at 6 am, this task can be tied to a notification service that sends out communication via text or email during non-intrusive hours.
 
@@ -44,7 +44,7 @@ The diagram above demonstrates how they work together.
 
 The Billing Service is started by the main module of the app, _pleo-antaeus-app_ via a scheduler whose context is aware of the job. The trigger fires if it is time and the job executes.
 
-#### Why?
+#### The Whys
 1. _Asynchronous processing_
 
 The scheduler spins a worker thread pool, the default is 10 threads. Workers pick up tasks and execute them asynchronously. This task therefore does not need to interfere with other tasks running within the service.
