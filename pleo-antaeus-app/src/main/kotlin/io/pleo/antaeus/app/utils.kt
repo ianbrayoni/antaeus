@@ -5,7 +5,11 @@ import io.pleo.antaeus.models.Currency
 import io.pleo.antaeus.models.Invoice
 import io.pleo.antaeus.models.InvoiceStatus
 import io.pleo.antaeus.models.Money
+import org.quartz.CronScheduleBuilder
+import org.quartz.Trigger
+import org.quartz.TriggerBuilder
 import java.math.BigDecimal
+import java.util.*
 import kotlin.random.Random
 
 // This will create all schemas and setup initial data
@@ -37,4 +41,21 @@ internal fun getPaymentProvider(): PaymentProvider {
                 return Random.nextBoolean()
         }
     }
+}
+
+/*
+* CronTrigger set to run on 1st of every month at 6 am
+* See section on `Daylight Saving Time and Triggers` in
+* https://www.quartz-scheduler.net/documentation/faq.html
+*
+* */
+internal fun getBillingCronTrigger(): Trigger {
+    return TriggerBuilder
+            .newTrigger()
+            .withSchedule(
+                    CronScheduleBuilder
+                            .cronSchedule("0 0 6 1 1/1 ? *")
+                            .inTimeZone(TimeZone.getTimeZone("UTC"))
+                            .withMisfireHandlingInstructionFireAndProceed())
+            .build()
 }
