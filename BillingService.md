@@ -8,12 +8,15 @@ _Quartz_ did fit this criteria hence its usage herein. Its also open-source and 
 The solution has three components: _scheduler_, _job_ and a _trigger_:
 
 i) Job
+
    Task to be executed, i.e, billing of invoices.
 
 ii) Scheduler
+
    Coordinates the execution of the job.
 
 iii) Trigger
+
    Sets up the interval and frequency with which the job will run. I chose a [CronTrigger](https://www.quartz-scheduler.net/documentation/quartz-2.x/tutorial/crontriggers.html) which is used to execute a job using a cron expression. The job in our case will run on 1st of every month at 6 am, this task can be tied to a notification service that sends out communication via text or email during non-intrusive hours.
 
 
@@ -23,8 +26,10 @@ The diagram above demonstrates how they work together. The Billing Service is st
 
 #### Why?
 1. _Asynchronous processing_
+
 The scheduler spins a worker thread pool, the default is 10 threads. Workers pick up tasks and execute them asynchronously. This task therefore does not need to affect interfere with other tasks running within the service.
 2. _Concurrent Processing_
+
 Billing invoices `1..10` ,for instance, can be done on different threads by each of the workers at the same time at best.
 3. Quartz supports [load balancing and clustering](http://www.quartz-scheduler.org/documentation/2.3.1-SNAPSHOT/tutorials/tutorial-lesson-11.html#TutorialLesson11-Clustering) when scaling needs arise.
 
