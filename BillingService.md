@@ -4,7 +4,7 @@
 
 - [Billing Service](#billing-service)
   - [Approach](#approach)
-    - [Why?](#why)
+    - [The Whys](#the-whys)
     - [Limitations](#limitations)
     - [Assumptions](#assumptions)
     - [Estimate](#estimate)
