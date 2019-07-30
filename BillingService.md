@@ -26,7 +26,7 @@ Billing invoices `1..10` ,for instance, can be done on different threads by each
 
 
 #### Limitations
-- For storage of jobs and triggers, I do use the default RAMJobStore which has a more finite limit on how many Jobs and Triggers can be stored. This is because one is more likely to have less RAM than hard-drive space for a database for the JDBC-JobStore. There is also potential for high memory consumption issues.
+- For storage of jobs and triggers, I do use the default [RAMJobStore](http://www.quartz-scheduler.org/documentation/quartz-2.1.7/configuration/ConfigRAMJobStore.html) which has a more finite limit on how many Jobs and Triggers can be stored. This is because one is more likely to have less RAM than hard-drive space for a database for the [JDBC-JobStore](http://www.quartz-scheduler.org/documentation/quartz-2.1.7/configuration/ConfigJobStoreTX.html). There is also potential for high memory consumption issues.
 - Making the cron expression and the jobs configurable via a UI could be vulnerable to sql injection attacks on the `Quartz` database.
 
 #### Assumptions
@@ -39,7 +39,7 @@ Billing invoices `1..10` ,for instance, can be done on different threads by each
 
 
 ### Learnings
-- One is at risk of running into bugs when using Java 12 alongside the mockk library.
+-  _Java 12_ seems not to be fully supported by the _mockk_ library. I encountered this [bug](https://github.com/mockk/mockk/issues/276).
 - This is a first and I am happy to have had a taste of Kotlin, Gradle, Kotlin Logging, mockk, JUnit 5 and Quartz Job Scheduler.
 
 ### References
