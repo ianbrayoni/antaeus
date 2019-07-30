@@ -1,3 +1,19 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Billing Service](#billing-service)
+  - [Approach](#approach)
+    - [Why?](#why)
+    - [Limitations](#limitations)
+    - [Assumptions](#assumptions)
+    - [Estimate](#estimate)
+  - [Learnings](#learnings)
+  - [References](#references)
+  - [Notes](#notes)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Billing Service
 This service contains logic to pay invoices on the first of the month in the different markets that Pleo operates.
 
@@ -63,4 +79,4 @@ I did the task over a period of roughly 4 days, a full weekend and early morning
 [Quartz Enterprise Job Scheduler](http://www.quartz-scheduler.org/overview/)
 
 ### Notes
-P.S: In the Python ecosystem, I would have used [celerybeat and crontab schedules](https://docs.celeryproject.org/en/latest/userguide/periodic-tasks.html).
+In the Python ecosystem, I would have used [celerybeat and crontab schedules](https://docs.celeryproject.org/en/latest/userguide/periodic-tasks.html).
