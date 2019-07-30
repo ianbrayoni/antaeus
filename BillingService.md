@@ -6,12 +6,16 @@ To achieve recurrent billing of invoices, I considered libraries that had a [cro
 _Quartz_ did fit this criteria hence its usage herein. Its also open-source and actively maintained.
 
 The solution has three components: _scheduler_, _job_ and a _trigger_:
+
 i) Job
    Task to be executed, i.e, billing of invoices.
+
 ii) Scheduler
    Coordinates the execution of the job.
+
 iii) Trigger
    Sets up the interval and frequency with which the job will run. I chose a [CronTrigger](https://www.quartz-scheduler.net/documentation/quartz-2.x/tutorial/crontriggers.html) which is used to execute a job using a cron expression. The job in our case will run on 1st of every month at 6 am, this task can be tied to a notification service that sends out communication via text or email during non-intrusive hours.
+
 
 ![Alt text](./resources/images/billing.png?raw=true "Billing Service")
 
