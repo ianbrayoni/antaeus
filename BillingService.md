@@ -22,7 +22,9 @@ iii) Trigger
 
 ![Alt text](./resources/images/billing.png?raw=true "Billing Service")
 
-The diagram above demonstrates how they work together. The Billing Service is started by the main module of the app, _pleo-antaeus-app_ via a scheduler whose context is aware of the job. The trigger fires if it is time, 1st of every month, and the job processes the invoices that are due.
+The diagram above demonstrates how they work together.
+
+The Billing Service is started by the main module of the app, _pleo-antaeus-app_ via a scheduler whose context is aware of the job. The trigger fires if it is time, 1st of every month, and the job processes the invoices that are due.
 
 #### Why?
 1. _Asynchronous processing_
@@ -32,6 +34,7 @@ The scheduler spins a worker thread pool, the default is 10 threads. Workers pic
 2. _Concurrent Processing_
 
 Billing invoices `1..10` ,for instance, can be done on different threads by each of the workers at the same time at best.
+
 3. Quartz supports [load balancing and clustering](http://www.quartz-scheduler.org/documentation/2.3.1-SNAPSHOT/tutorials/tutorial-lesson-11.html#TutorialLesson11-Clustering) when scaling needs arise.
 
 
