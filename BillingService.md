@@ -28,6 +28,7 @@ The diagram above demonstrates how they work together. The Billing Service is st
 1. _Asynchronous processing_
 
 The scheduler spins a worker thread pool, the default is 10 threads. Workers pick up tasks and execute them asynchronously. This task therefore does not need to affect interfere with other tasks running within the service.
+
 2. _Concurrent Processing_
 
 Billing invoices `1..10` ,for instance, can be done on different threads by each of the workers at the same time at best.
