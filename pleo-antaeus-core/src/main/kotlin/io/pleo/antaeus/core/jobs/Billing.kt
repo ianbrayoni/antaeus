@@ -18,9 +18,9 @@ class Billing : Job {
             // until the exception is addressed
             e.setUnscheduleAllTriggers(true)
 
-            logger.error(e) { "Job Execution Error" }
+            logger.error(e) { "Job Execution Error: $e" }
         } catch (e: Exception) {
-            logger.error(e) { "Job Execution Error" }
+            logger.error(e) { "Job Execution Error: $e" }
         }
 
     }

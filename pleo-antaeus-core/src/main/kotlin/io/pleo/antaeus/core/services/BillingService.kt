@@ -79,6 +79,6 @@ class BillingService(
     }
 
     private fun generalExceptionHandler(e: Exception, invoice: Invoice) {
-        logger.error(e) { "Processing Error - Exception occurred: invoiceId ${invoice.id}" }
+        logger.error(e) { "Processing Error - Exception occurred: invoiceId ${invoice.id}, $e" }
     }
 }

@@ -19,9 +19,9 @@ open class Scheduler<Job : Billing>(
             scheduler.scheduleJob(job.getJobDetail(), trigger)
             scheduler.start()
         } catch (e: SchedulerException) {
-            logger.error(e) { "SchedulerException: $e" }
+            logger.error(e) { "Job Scheduling Error: $e" }
         } catch (e: Exception) {
-            logger.error(e) { "Exception: $e" }
+            logger.error(e) { "Job Scheduling Error: $e" }
         }
     }
 
